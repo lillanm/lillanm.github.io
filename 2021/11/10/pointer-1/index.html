@@ -4,22 +4,22 @@
   <meta charset="utf-8">
   
   
-  <title>Hexo</title>
+  <title>pointer | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="指针内容总结前言：指针需要了解的内容优先级c语言中的优先级实在是多如牛毛，但每个都是那么重要，这里能力有限不敢过多赘述，只简单写一下在指针内存在的三个重要的优先级（结合顺序）    (  )  的优先级大于[   ]，大于  *     上代码看例子 12345678int p; &#x2F;&#x2F; 一个整形变量int *p; &#x2F;&#x2F; p与*结合，说明这是一个int类型的指针int p[10]; &#x2F;&#x2F; 这是一个数">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/2021/11/08/pointer/index.html">
+<meta property="og:title" content="pointer">
+<meta property="og:url" content="http://example.com/2021/11/10/pointer-1/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="指针内容总结前言：指针需要了解的内容优先级c语言中的优先级实在是多如牛毛，但每个都是那么重要，这里能力有限不敢过多赘述，只简单写一下在指针内存在的三个重要的优先级（结合顺序）    (  )  的优先级大于[   ]，大于  *     上代码看例子 12345678int p; &#x2F;&#x2F; 一个整形变量int *p; &#x2F;&#x2F; p与*结合，说明这是一个int类型的指针int p[10]; &#x2F;&#x2F; 这是一个数">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2021/11/08/pointer/HEXO/myblog/source_posts/pointer/指针.png">
-<meta property="og:image" content="http://example.com/2021/11/08/pointer/HEXO/myblog/source_posts/pointer/二级指针.png">
-<meta property="article:published_time" content="2021-11-08T13:47:51.104Z">
-<meta property="article:modified_time" content="2021-11-09T14:44:42.644Z">
+<meta property="og:image" content="http://example.com/2021/11/10/pointer-1/%E6%8C%87%E9%92%88.png">
+<meta property="og:image" content="http://example.com/2021/11/10/pointer-1/%E4%BA%8C%E7%BA%A7%E6%8C%87%E9%92%88.png">
+<meta property="article:published_time" content="2021-11-10T14:35:48.000Z">
+<meta property="article:modified_time" content="2021-11-10T14:39:34.757Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2021/11/08/pointer/HEXO/myblog/source_posts/pointer/指针.png">
+<meta name="twitter:image" content="http://example.com/2021/11/10/pointer-1/%E6%8C%87%E9%92%88.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -76,15 +76,25 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-pointer" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-pointer-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2021/11/08/pointer/" class="article-date">
-  <time class="dt-published" datetime="2021-11-08T13:47:51.104Z" itemprop="datePublished">2021-11-08</time>
+    <a href="/2021/11/10/pointer-1/" class="article-date">
+  <time class="dt-published" datetime="2021-11-10T14:35:48.000Z" itemprop="datePublished">2021-11-10</time>
 </a>
     
   </div>
   <div class="article-inner">
     
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      pointer
+    </h1>
+  
+
+      </header>
     
     <div class="e-content article-entry" itemprop="articleBody">
       
@@ -120,7 +130,7 @@
 <p><strong>先看代码</strong></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a = <span class="number">12</span>;</span><br><span class="line">	<span class="keyword">int</span> b;</span><br><span class="line">	<span class="keyword">int</span>* p;</span><br><span class="line">	<span class="keyword">int</span>** ptr;</span><br><span class="line">	p = &amp;a;</span><br><span class="line">	*p = <span class="number">24</span>;<span class="comment">//将a修改为24</span></span><br><span class="line">	ptr = &amp;p;</span><br><span class="line">	*ptr = &amp;b;<span class="comment">//意味着p = &amp;b;</span></span><br><span class="line">	**ptr = <span class="number">34</span>;<span class="comment">//b = 34;</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d %d&quot;</span>, a, b);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><img src="/2021/11/08/pointer/HEXO\myblog\source_posts\pointer\指针.png"></p>
+<p><img src="/2021/11/10/pointer-1/%E6%8C%87%E9%92%88.png"></p>
 <p><strong>我们将代码内涉及到的每一个都写了出来，最上方代表名称，下面以0x开头的代表他的地址，大写的字母代表空间</strong></p>
 <p><strong>先说说各自的空间内都可以存放什么</strong></p>
 <blockquote>
@@ -145,7 +155,7 @@
 
 <p><em><strong>事情和我们想的不一样，第一个函数哪里出了问题？为什么无法达到我们想要的效果？</strong></em></p>
 <p>为什么第一个没有变化？函数在调用时会在栈内开辟一个空间，函数调用结束会销毁，而这里面无论是lillanm还是helloworld，都存在数据段内，在main函数结束时才会释放</p>
-<p><img src="/2021/11/08/pointer/HEXO\myblog\source_posts\pointer\二级指针.png"></p>
+<p><img src="/2021/11/10/pointer-1/%E4%BA%8C%E7%BA%A7%E6%8C%87%E9%92%88.png"></p>
 <p><strong>第一个函数传入ptr指向的地址后，这个地址指向了helloworld，但是函数调用完毕后释放空间，无法找到helloworld的值</strong></p>
 <p><strong>第二个函数将ptr本身的地址传入，相当于在函数内让ptr内存放的地址变为helloworld的地址</strong></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><strong>就到这吧，太复杂的话终究会绕到里面去，好久才会绕出来，但是认准什么类型里面存放什么值，不要搞错，指针还是可以被我们掌控的，虽然这对于我来说很难。</strong></p>
@@ -153,7 +163,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/11/08/pointer/" data-id="ckvqti6d500003gtq4wnx8t1j" data-title="" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/11/10/pointer-1/" data-id="ckvtmpfrc0000uwtq4kzeba5h" data-title="pointer" class="article-share-link">Share</a>
       
       
       
@@ -163,17 +173,8 @@
     
 <nav id="article-nav">
   
-    <a href="/2021/11/10/pointer-1/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          pointer
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/11/08/LinkNode/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2021/11/08/pointer/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title"></div>
     </a>
